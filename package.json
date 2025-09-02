@@ -1,0 +1,53 @@
+{
+  "name": "argo-cd-action",
+  "version": "0.0.0",
+  "private": true,
+  "description": "GitHub action for executing Argo CD",
+  "keywords": [
+    "github",
+    "actions",
+    "argo-cd",
+    "git-ops"
+  ],
+  "homepage": "https://github.com/step-security/argo-cd-action#readme",
+  "bugs": {
+    "url": "https://github.com/step-security/argo-cd-action/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/step-security/argo-cd-action.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Step Security",
+  "main": "src/index.ts",
+  "scripts": {
+    "all": "yarn lint && yarn compile",
+    "compile": "ncc build -m",
+    "lint": "eslint . --quiet --fix"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1",
+    "@actions/tool-cache": "^2.0.2",
+    "@octokit/auth-action": "^6.0.1",
+    "@octokit/rest": "^22.0.0",
+    "axios": "^1.11.0",
+    "string-argv": "^0.3.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "@types/node": "^24.3.0",
+    "@vercel/ncc": "^0.38.3",
+    "eslint": "^9.34.0",
+    "lint-staged": "^16.1.5",
+    "semantic-release": "^24.2.7",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.41.0"
+  }
+}
