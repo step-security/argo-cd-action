@@ -1,5 +1,5 @@
 name: Argo CD Action
-author: Step Security
+author: step-security
 description: GitHub action for installing/executing Argo CD cli
 branding:
   icon: anchor

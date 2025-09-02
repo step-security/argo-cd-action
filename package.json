@@ -18,7 +18,7 @@
     "url": "git+https://github.com/step-security/argo-cd-action.git"
   },
   "license": "Apache-2.0",
-  "author": "Step Security",
+  "author": "step-security",
   "main": "src/index.ts",
   "scripts": {
     "all": "yarn lint && yarn compile",
