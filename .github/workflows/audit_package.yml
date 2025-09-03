@@ -1,4 +1,4 @@
-name: NPM Audit Fix Run
+name: Yarn Audit Fix Run
 
 on:
   workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
     uses: step-security/reusable-workflows/.github/workflows/audit_fix.yml@v1
     with:
       base_branch: ${{ inputs.base_branch || 'main' }}
-      package_manager: ${{ inputs.base_branch || 'yarn'}}
+      package_manager: ${{ inputs.package_manager || 'yarn'}}
       script: ${{ inputs.script || 'yarn all'}}
 
 permissions:
