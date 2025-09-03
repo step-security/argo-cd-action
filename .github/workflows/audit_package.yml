@@ -1,0 +1,33 @@
+name: NPM Audit Fix Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: "Specify a base branch"
+        required: false
+        default: "main"
+      package_manager:
+        description: "Specify package manager if available (npm or yarn or pnpm)"
+        required: false
+        default: "yarn"
+      script:
+        description: "Specify the npm/yarn script to run if available"
+        required: false
+        default: "yarn all"
+  schedule:
+    - cron: "0 0 * * 1"
+
+jobs:
+  audit-fix:
+    uses: step-security/reusable-workflows/.github/workflows/audit_fix.yml@v1
+    with:
+      base_branch: ${{ inputs.base_branch || 'main' }}
+      package_manager: ${{ inputs.base_branch || 'yarn'}}
+      script: ${{ inputs.script || 'yarn all'}}
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read
+  issues: write
