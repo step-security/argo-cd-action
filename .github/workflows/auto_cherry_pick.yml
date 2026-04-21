@@ -11,14 +11,10 @@ on:
         description: "Run mode: cherry-pick or verify"
         required: false
         default: "cherry-pick"
-      package_manager:
-        description: "Specify package manager if available (npm or yarn or pnpm)"
-        required: false
-        default: "yarn"
       script:
         description: "Specify the npm/yarn script to run if available"
         required: false
-        default: "yarn all"
+        default: "npm run all"
       node_version:
         description: "Specify Node.js version (e.g., '18', '20', 'lts/*')"
         required: false
