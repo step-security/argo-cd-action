@@ -68,7 +68,7 @@ If you run workflows frequently, you may hit GitHub's API rate limit when downlo
 Use the `download-url` input to download the CLI directly from your ArgoCD server instead of GitHub releases. This keeps your CLI version in sync with your server and avoids GitHub API rate limits.
 
 ```yml
-- uses: step-security/argo-cd-action/@v3
+- uses: step-security/argo-cd-action@v3
   with:
     download-url: https://argocd.example.com/download/argocd-linux-amd64
     command: version
@@ -79,12 +79,12 @@ Use the `download-url` input to download the CLI directly from your ArgoCD serve
 
 ```yml
 - name: Install ArgoCD CLI
-  uses: step-security/argo-cd-action/@v3
+  uses: step-security/argo-cd-action@v3
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 - name: Deploy application
-  uses: step-security/argo-cd-action/@main
+  uses: step-security/argo-cd-action@v3
   with:
     command: app sync my-app
     options: >-
@@ -100,7 +100,7 @@ The action exposes the CLI stdout as a step output, which can be referenced in s
 ```yml
 - name: List applications
   id: argocd
-  uses: step-security/argo-cd-action/@v3
+  uses: step-security/argo-cd-action@v3
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
@@ -118,7 +118,7 @@ The action exposes the CLI stdout as a step output, which can be referenced in s
 ### Set a specific version
 
 ```yml
-- uses: step-security/argo-cd-action/@v3
+- uses: step-security/argo-cd-action@v3
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
@@ -132,7 +132,7 @@ The action exposes the CLI stdout as a step output, which can be referenced in s
 If you omit `command`, the action only installs the ArgoCD CLI and adds it to `PATH` for use in subsequent `run` steps.
 
 ```yml
-- uses: step-security/argo-cd-action/@v3
+- uses: step-security/argo-cd-action@v3
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
