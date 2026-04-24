@@ -61,17 +61,19 @@ async function run(): Promise<void> {
     core.debug(`[index] options: ${options}`);
     const version = core.getInput('version', {required: false}).trim();
     core.debug(`[index] version: ${version}`);
+    const downloadUrl = core.getInput('download-url', {required: false}).trim() || undefined;
+    core.debug(`[index] download-url: ${downloadUrl}`);
 
     // Get executable
-    const argocd = await ArgoCD.getOrDownload(version);
+    const argocd = await ArgoCD.getOrDownload(version, downloadUrl);
 
     const args = [...command, ...options];
-    if (args) {
+    if (args.length) {
       const result = await argocd.callStdout(args);
       core.setOutput('output', result);
     }
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 }
 
